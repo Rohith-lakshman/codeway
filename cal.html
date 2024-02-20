@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.calculator input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #eee;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.op {
+    background-color: #fb7c14;
+    color: #fff;
+}
+
+.equal18tn {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.owner {
+    color: #555;
+    font-size: 12px;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h6 class="owner">calculator</h6>
+        <input type="text" placeholder="0" id="inputBox">
+        <div>
+            <button class="op">AC</button>
+            <button class="op">DEL</button>
+            <button class="op">%</button>
+            <button class="op">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="op">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="op">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="op">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button class="op">.</button>
+            <button class="equal18tn">=</button>
+        </div>
+    </div>
+<script>
+let input=document.getElementById('inputBox');
+let buttons=document.querySelectorAll('button');
+let string=""
+let arr=Array.from(buttons);
+arr.forEach(button => {
+    button.addEventListener('click',(e) => {
+        if(e.target.innerHTML == '='){
+            string=eval(string);
+            input.value=string;
+        }
+        else if(e.target.innerHTML == 'AC'){
+            string="";
+            input.value=string;
+        }
+        else if(e.target.innerHTML == 'DEL'){
+            string = string.substring(0,string.length-1);
+            input.value=string;
+        }
+        else{
+            string += e.target.innerHTML;
+            input.value = string;
+        }
+
+    })
+})
+
+</script>
+</body>
+</html>
